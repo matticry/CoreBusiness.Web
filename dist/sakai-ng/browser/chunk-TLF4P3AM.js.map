@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/auth/auth.routes.ts"],
+  "sourcesContent": ["import { Routes } from '@angular/router';\n\nexport default [\n    { path: 'access', loadComponent: () => import('./access').then((m) => m.Access), title: 'Acceso denegado' },\n    { path: 'error', loadComponent: () => import('./error').then((m) => m.Error), title: 'Error' },\n    { path: 'login', loadComponent: () => import('./login/login').then((m) => m.Login), title: 'Iniciar sesión' },\n    { path: '', redirectTo: 'login', pathMatch: 'full' }\n] as Routes;\n"],
+  "mappings": ";;;AAEA,IAAA,sBAAe;EACX,EAAE,MAAM,UAAU,eAAe,MAAM,OAAO,qBAAU,EAAE,KAAK,CAAC,MAAM,EAAE,MAAM,GAAG,OAAO,kBAAiB;EACzG,EAAE,MAAM,SAAS,eAAe,MAAM,OAAO,qBAAS,EAAE,KAAK,CAAC,MAAM,EAAE,KAAK,GAAG,OAAO,QAAO;EAC5F,EAAE,MAAM,SAAS,eAAe,MAAM,OAAO,qBAAe,EAAE,KAAK,CAAC,MAAM,EAAE,KAAK,GAAG,OAAO,oBAAgB;EAC3G,EAAE,MAAM,IAAI,YAAY,SAAS,WAAW,OAAM;;",
+  "names": []
+}

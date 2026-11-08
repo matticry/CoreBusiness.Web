@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkItemDto } from '@/core/models/WorkItemDto';
-import { MessageService } from 'primeng/api';
-import { UserService } from '@/core/services/user.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { WorkItemService } from '@/core/services/work-item.service';
 import { Table, TableModule } from 'primeng/table';
 import { DatePipe, NgClass } from '@angular/common';
 import { InputIcon } from 'primeng/inputicon';
 import { IconField } from 'primeng/iconfield';
 import { Button } from 'primeng/button';
+import { finalize } from 'rxjs';
 
 @Component({
     selector: 'app-work-items',
@@ -20,10 +19,7 @@ export class WorkItemsComponent implements OnInit {
     loading = false;
     totalRecords = 0;
 
-    constructor(
-        private readonly userService: UserService,
-        private readonly msgService: MessageService
-    ) {}
+    constructor(private readonly workItemService: WorkItemService) {}
 
     ngOnInit(): void {
         this.getPendingWorkItems();
@@ -31,22 +27,16 @@ export class WorkItemsComponent implements OnInit {
 
     getPendingWorkItems(): void {
         this.loading = true;
-        this.userService.getWorkItemsByStatus('P').subscribe({
-            next: (data: WorkItemDto[]) => {
-                this.workItems = data;
-                this.totalRecords = data.length;
-                this.loading = false;
-            },
-            error: (error: HttpErrorResponse) => {
-                console.error(error);
-                this.msgService.add({
-                    severity: 'error',
-                    summary: 'Error',
-                    detail: error.error?.message || 'No se pudieron cargar los work items'
-                });
-                this.loading = false;
-            }
-        });
+        this.workItemService
+            .getByStatus('P')
+            .pipe(finalize(() => (this.loading = false)))
+            .subscribe({
+                next: (data: WorkItemDto[]) => {
+                    this.workItems = data;
+                    this.totalRecords = data.length;
+                },
+                error: () => undefined
+            });
     }
 
     getRelevanceIcon(relevance: number): string {

@@ -1,0 +1,12 @@
+// src/app/core/constants/permissions.ts
+var USER_PERMISSIONS = {
+  CREATE: "CREATE.USER.PERMISSION",
+  READ: "READ.USER.PERMISSION",
+  UPDATE: "UPDATE.USER.PERMISSION",
+  DELETE: "DELETE.USER.PERMISSION"
+};
+
+export {
+  USER_PERMISSIONS
+};
+//# sourceMappingURL=chunk-ONTYLXLW.js.map

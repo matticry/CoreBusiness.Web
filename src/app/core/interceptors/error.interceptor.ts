@@ -1,21 +1,29 @@
 import type { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { MessageService } from 'primeng/api';
 import { catchError, throwError } from 'rxjs';
+import { SILENT_ERROR } from '../config/http-context';
+import { NotificationService } from '../services/notification.service';
+import { extractErrorMessage } from '../utils/http-error.util';
+
+const LOGIN_ENDPOINT = '/auth/login';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
-  const msgService = inject(MessageService);
-  
-  return next(req).pipe(
-    catchError((error: HttpErrorResponse) => {
-      if (error.status === 0) {
-        msgService.add({ severity: 'error', summary: 'Error', detail: 'Sin conexión con el servidor.' });
-      } else if (error.error?.Message) {
-        msgService.add({severity: 'error', summary: 'Error en el servidor.', detail:error.error.Message});
-      } else {
-        msgService.add({ severity: 'error', summary: 'Error', detail: 'Ocurrió un error inesperado.' });
-      }
-      return throwError(() => error); 
-    })
-  );
+    const notify = inject(NotificationService);
+
+    return next(req).pipe(
+        catchError((error: HttpErrorResponse) => {
+            if (req.context.get(SILENT_ERROR)) {
+                return throwError(() => error);
+            }
+
+            const isLoginRequest = req.url.includes(LOGIN_ENDPOINT);
+            const isHandledByRefresh = error.status === 401 && !isLoginRequest;
+
+            if (!isHandledByRefresh) {
+                notify.error(extractErrorMessage(error));
+            }
+
+            return throwError(() => error);
+        })
+    );
 };

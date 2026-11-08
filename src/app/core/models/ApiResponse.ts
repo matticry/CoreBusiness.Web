@@ -1,9 +1,9 @@
 ﻿export interface ApiResponse<T> {
-    success: boolean
-    message: string
-    data: T
-    errorCode: string | null
-    validationErrors: any | null
-    timestamp: string
-    requestId: string
+    success: boolean;
+    status: number;
+    message: string;
+    data: T | null;
+    errors?: Record<string, string> | null;
+    correlationId?: string;
+    timestamp: string;
 }

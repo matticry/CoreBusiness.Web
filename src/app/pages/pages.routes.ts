@@ -1,16 +1,18 @@
+import { USER_PERMISSIONS } from '@/core/constants/permissions';
+import { permissionGuard } from '@/core/guards/permission.guard';
 import { Routes } from '@angular/router';
-import { Documentation } from './documentation/documentation';
-import { Crud } from './crud/crud';
-import { Empty } from './empty/empty';
-import { UserListComponent } from './user/user-list/user-list.component';
-import { WorkItemsComponent } from '@/pages/work-items/work-items';
 
 export default [
-    { path: 'documentation', component: Documentation },
-    { path: 'crud', component: Crud },
-    { path: 'empty', component: Empty },
-    { path: 'user-list', component: UserListComponent },
-    { path: 'work-items', component: WorkItemsComponent },
-
+    { path: 'documentation', loadComponent: () => import('./documentation/documentation').then((m) => m.Documentation), title: 'Documentación' },
+    { path: 'crud', loadComponent: () => import('./crud/crud').then((m) => m.Crud), title: 'CRUD' },
+    { path: 'empty', loadComponent: () => import('./empty/empty').then((m) => m.Empty), title: 'Vacío' },
+    {
+        path: 'users',
+        canActivate: [permissionGuard],
+        data: { permission: USER_PERMISSIONS.READ },
+        loadComponent: () => import('./user/user-list/user-list').then((m) => m.UserList),
+        title: 'Usuarios'
+    },
+    { path: 'work-items', loadComponent: () => import('./work-items/work-items').then((m) => m.WorkItemsComponent), title: 'Items de trabajo' },
     { path: '**', redirectTo: '/notfound' }
 ] as Routes;

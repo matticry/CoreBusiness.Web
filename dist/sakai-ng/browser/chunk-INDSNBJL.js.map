@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/environments/environment.development.ts", "src/app/core/config/api.config.ts"],
+  "sourcesContent": ["export const environment = {\n    production: false,\n    apiUrl: 'http://localhost:8080/api/v1',\n\n    defaultUserImage: 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg'\n};\n", "import { InjectionToken } from '@angular/core';\nimport { environment } from 'src/environments/environment';\n\nexport const API_URL = new InjectionToken<string>('API_URL', {\n    providedIn: 'root',\n    factory: () => environment.apiUrl\n});\n"],
+  "mappings": ";;;;;AAAO,IAAM,cAAc;EACvB,YAAY;EACZ,QAAQ;EAER,kBAAkB;;;;ACDf,IAAM,UAAU,IAAI,eAAuB,WAAW;EACzD,YAAY;EACZ,SAAS,MAAM,YAAY;CAC9B;",
+  "names": []
+}

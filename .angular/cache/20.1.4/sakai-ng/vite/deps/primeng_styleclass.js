@@ -14,11 +14,13 @@ import {
   booleanAttribute,
   setClassMetadata,
   ɵɵdefineDirective,
-  ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵdirectiveInject,
   ɵɵlistener
-} from "./chunk-C3SWWKUW.js";
+} from "./chunk-PNZQNRYR.js";
+import {
+  ɵɵdefineInjector
+} from "./chunk-47QT7CX4.js";
 import "./chunk-4ALNEIOD.js";
 import "./chunk-6XXUSXOD.js";
 import "./chunk-PZP3Q6FW.js";

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/core/constants/permissions.ts"],
+  "sourcesContent": ["export const USER_PERMISSIONS = {\n    CREATE: 'CREATE.USER.PERMISSION',\n    READ: 'READ.USER.PERMISSION',\n    UPDATE: 'UPDATE.USER.PERMISSION',\n    DELETE: 'DELETE.USER.PERMISSION'\n} as const;\n\nexport const ROLES = {\n    ADMIN: 'ADMIN',\n    SUPER_ADMIN: 'SUPER_ADMIN'\n} as const;\n\nexport type UserPermission = (typeof USER_PERMISSIONS)[keyof typeof USER_PERMISSIONS];\n"],
+  "mappings": ";AAAO,IAAM,mBAAmB;EAC5B,QAAQ;EACR,MAAM;EACN,QAAQ;EACR,QAAQ;;",
+  "names": []
+}

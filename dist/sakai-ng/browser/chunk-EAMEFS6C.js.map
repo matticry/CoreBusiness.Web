@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/empty/empty.ts"],
+  "sourcesContent": ["import { Component } from '@angular/core';\n\n@Component({\n    selector: 'app-empty',\n    standalone: true,\n    template: ` <div class=\"card\">\n        <div class=\"font-semibold text-xl mb-4\">Empty Page</div>\n        <p>Use this page to start from scratch and place your custom content.</p>\n    </div>`\n})\nexport class Empty {}\n"],
+  "mappings": ";;;;;;;;;;;;AAUM,IAAO,QAAP,MAAO,OAAK;;qCAAL,QAAK;EAAA;yEAAL,QAAK,WAAA,CAAA,CAAA,WAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,QAAA,CAAA,CAAA,GAAA,MAAA,GAAA,CAAA,GAAA,iBAAA,WAAA,MAAA,CAAA,GAAA,UAAA,SAAA,eAAA,IAAA,KAAA;AAAA,QAAA,KAAA,GAAA;AALF,MAAA,4BAAA,GAAA,OAAA,CAAA,EAAkB,GAAA,OAAA,CAAA;AACc,MAAA,iBAAA,GAAA,YAAA;AAAU,MAAA,0BAAA;AAClD,MAAA,4BAAA,GAAA,GAAA;AAAG,MAAA,iBAAA,GAAA,oEAAA;AAAkE,MAAA,0BAAA,EAAI;;;;;sEAGpE,OAAK,CAAA;UARjB;WAAU;MACP,UAAU;MACV,YAAY;MACZ,UAAU;;;;KAIb;;;;6EACY,OAAK,EAAA,WAAA,SAAA,UAAA,gCAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

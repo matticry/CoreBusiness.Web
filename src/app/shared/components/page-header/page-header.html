@@ -1,0 +1,13 @@
+<div class="flex items-center gap-2 min-w-0">
+    <div
+        class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-primary-100 via-primary-200/60 to-primary-300/40 dark:from-primary-900/50 dark:via-primary-800/70 dark:to-primary-700/50 border border-primary-200/60 dark:border-primary-600/40 shadow-lg"
+    >
+        <i [class]="icon() + ' text-primary-600 dark:text-primary-300 text-xl'"></i>
+    </div>
+    <div class="min-w-0">
+        <p class="text-gray-800 dark:text-white text-xl sm:text-2xl font-bold leading-snug tracking-tight">{{ title() }}</p>
+        @if (subtitle()) {
+        <p class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm leading-snug">{{ subtitle() }}</p>
+        }
+    </div>
+</div>

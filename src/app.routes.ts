@@ -7,7 +7,7 @@ import { Notfound } from '@/pages/notfound/notfound';
 import { authGuard } from '@/core/guards/auth.guard';
 
 export const appRoutes: Routes = [
-    { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+    { path: '', redirectTo: '/pages/users', pathMatch: 'full' },
     { path: 'landing', component: Landing },
 
     {
